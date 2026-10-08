@@ -1,0 +1,22 @@
+name: Publish code as wiki
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  publish-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Docs repo
+        uses: actions/checkout@v4
+
+      - name: Push Docs content to wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        env:
+          WIKI_DIR: .
+          OWNER: MIREA-ProgramInzch
+          REPO: 01-Test
+          GH_TOKEN: ${{ secrets.NEW_WIKI_TOKEN }}
+          GH_MAIL: nikon.aleks2004@gmail.com
+          GH_NAME: LjeDed
